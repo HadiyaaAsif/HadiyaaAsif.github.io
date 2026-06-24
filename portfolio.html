@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hadiya Asif — ML & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.16);
+    --text: #f0eff5;
+    --text-muted: #888799;
+    --text-dim: #555468;
+    --accent: #7c6af7;
+    --accent2: #5ec4a8;
+    --accent3: #f06b6b;
+    --accent-glow: rgba(124,106,247,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 6rem 0; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  #hero {
+    padding-top: 10rem; padding-bottom: 7rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 4rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text); margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-bio {
+    color: var(--text-muted); font-size: 1rem; line-height: 1.75;
+    margin-bottom: 2.5rem; max-width: 420px;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 1.4rem; border-radius: 6px;
+    font-size: 0.85rem; font-weight: 500;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.2s; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: #6a58e5; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 0.5px solid var(--border-hover);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .avatar-ring {
+    width: 280px; height: 280px; border-radius: 50%;
+    border: 1px solid var(--border-hover);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .avatar-ring::before {
+    content: ''; position: absolute; inset: -10px; border-radius: 50%;
+    border: 1px dashed rgba(124,106,247,0.3);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar-inner {
+    width: 220px; height: 220px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a1830 0%, #0f1525 100%);
+    border: 1px solid var(--border-hover);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.25rem;
+  }
+  .avatar-initials {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem; font-weight: 700; color: var(--accent);
+    letter-spacing: -0.04em;
+  }
+  .avatar-tag {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .orbit-dot {
+    position: absolute; width: 10px; height: 10px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .orbit-dot-1 { top: 10px; right: 60px; }
+  .orbit-dot-2 { bottom: 20px; left: 40px; background: var(--accent2); }
+  .orbit-dot-3 { top: 50%; right: -5px; background: var(--accent3); width: 8px; height: 8px; }
+
+  /* SECTION HEADING */
+  .sec-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600; letter-spacing: -0.025em;
+    color: var(--text); margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px; border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .skill-cell {
+    background: var(--bg2); padding: 1.5rem 1.25rem;
+    transition: background 0.2s;
+  }
+  .skill-cell:hover { background: var(--bg3); }
+  .skill-icon {
+    font-size: 1.5rem; margin-bottom: 0.75rem;
+    display: block;
+  }
+  .skill-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--text); margin-bottom: 0.5rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag {
+    font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 4px;
+    background: rgba(255,255,255,0.05); color: var(--text-muted);
+    border: 0.5px solid var(--border);
+    white-space: nowrap;
+  }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border);
+  }
+  .exp-item { position: relative; margin-bottom: 2.5rem; }
+  .exp-item::before {
+    content: ''; position: absolute; left: -1.5rem; top: 6px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); margin-left: -3px;
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+  .exp-date {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 0.25rem;
+  }
+  .exp-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.1rem;
+  }
+  .exp-company {
+    font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--text-muted);
+    padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--text-dim); font-size: 0.8rem;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .project-card {
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+  .project-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; margin-bottom: 0.75rem;
+  }
+  .project-icon {
+    font-size: 1.4rem; line-height: 1;
+  }
+  .project-badge {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+  .badge-ml { background: rgba(124,106,247,0.15); color: #a89ff8; }
+  .badge-dl { background: rgba(94,196,168,0.15); color: #5ec4a8; }
+  .badge-ai { background: rgba(240,107,107,0.15); color: #f09090; }
+  .badge-ds { background: rgba(250,199,117,0.15); color: #f5c07a; }
+
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.85rem; color: var(--text-muted);
+    line-height: 1.6; margin-bottom: 1rem;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .stack-tag {
+    font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 3px;
+    background: rgba(255,255,255,0.04); color: var(--text-dim);
+    border: 0.5px solid var(--border);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    align-items: start;
+  }
+  .contact-text { color: var(--text-muted); line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.9rem; transition: color 0.2s;
+    padding: 0.75rem 1rem;
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 8px;
+  }
+  .contact-link:hover { color: var(--text); border-color: var(--accent); }
+  .contact-icon { font-size: 1rem; color: var(--accent); flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border); padding: 2rem;
+    text-align: center; color: var(--text-dim); font-size: 0.8rem;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 680px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">hadiya<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">ML &amp; AI Engineer</p>
+        <h1>Hadiya<br /><em>Asif</em></h1>
+        <p class="hero-bio">
+          Computer science graduate building and deploying ML models, designing data pipelines, 
+          and crafting interactive front-end applications — bridging the gap between AI research 
+          and real-world impact.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-ring">
+          <div class="orbit-dot orbit-dot-1"></div>
+          <div class="orbit-dot orbit-dot-2"></div>
+          <div class="orbit-dot orbit-dot-3"></div>
+          <div class="avatar-inner">
+            <span class="avatar-initials">HA</span>
+            <span class="avatar-tag">SZABIST 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Technical toolkit</p>
+      <h2>Skills &amp; technologies</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-cell">
+        <span class="skill-icon">🤖</span>
+        <p class="skill-title">Machine Learning</p>
+        <div class="skill-tags">
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">Model Building</span>
+          <span class="tag">Evaluation</span>
+          <span class="tag">Feature Engineering</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon">🧠</span>
+        <p class="skill-title">Deep Learning</p>
+        <div class="skill-tags">
+          <span class="tag">TensorFlow</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Neural Networks</span>
+          <span class="tag">CNNs</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon">📊</span>
+        <p class="skill-title">Data Science</p>
+        <div class="skill-tags">
+          <span class="tag">NumPy</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Preprocessing</span>
+          <span class="tag">Data Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon">🗄️</span>
+        <p class="skill-title">Databases</p>
+        <div class="skill-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Data Modeling</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon">🌐</span>
+        <p class="skill-title">Front-End</p>
+        <div class="skill-tags">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Career</p>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="exp-item">
+        <p class="exp-date">Feb 2025 – Feb 2026</p>
+        <p class="exp-role">Machine Learning Engineer</p>
+        <p class="exp-company">FiberHome Technologies</p>
+        <ul class="exp-bullets">
+          <li>Built and deployed ML models for telecom use cases including optimization, fault detection, and predictive maintenance.</li>
+          <li>Designed and maintained large-scale data pipelines for preprocessing and model training.</li>
+          <li>Improved model performance through advanced ML techniques in cross-functional team collaboration.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-date">Oct 2024 – Jan 2025</p>
+        <p class="exp-role">Machine Learning Intern</p>
+        <p class="exp-company">FiberHome Technologies</p>
+        <ul class="exp-bullets">
+          <li>Assisted in building and testing ML models for telecom optimization and prediction tasks.</li>
+          <li>Supported data analysis workflows and contributed to feature engineering pipelines.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-date">Jun 2024 – Sept 2024</p>
+        <p class="exp-role">AI & Machine Learning Intern</p>
+        <p class="exp-company">ITSOLERA</p>
+        <ul class="exp-bullets">
+          <li>Developed and applied machine learning models to real-world problems.</li>
+          <li>Worked on URL analysis to deliver enhanced data insights and improved analytics.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-date">Jun 2024 – Aug 2024</p>
+        <p class="exp-role">Data Science Intern</p>
+        <p class="exp-company">INTERNNCRAFT</p>
+        <ul class="exp-bullets">
+          <li>Designed a data-driven project analyzing coffee shop sales data end-to-end.</li>
+          <li>Delivered actionable insights using Python, visualization libraries, and data modeling techniques.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-date">July 2024</p>
+        <p class="exp-role">Data Science Intern</p>
+        <p class="exp-company">Digital Empowerment Network</p>
+        <ul class="exp-bullets">
+          <li>Built an outfit recommendation system using advanced data science and ML algorithms.</li>
+          <li>Contributed analytical and problem-solving skills across multiple team projects.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Work</p>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🔥</span>
+          <span class="project-badge badge-ai">AI · Robotics</span>
+        </div>
+        <p class="project-title">FireGuard — AI-Based Firefighter Robot</p>
+        <p class="project-desc">An autonomous firefighting robot equipped with real-time fire detection using computer vision, obstacle avoidance, and adaptive learning to navigate hazardous environments without human intervention.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Computer Vision</span>
+          <span class="stack-tag">CNN</span>
+          <span class="stack-tag">Autonomous Navigation</span>
+          <span class="stack-tag">Raspberry Pi</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🌍</span>
+          <span class="project-badge badge-ml">ML · Prediction</span>
+        </div>
+        <p class="project-title">Earthquake Prediction Model</p>
+        <p class="project-desc">A seismic activity prediction system trained on historical geological data, using ensemble ML models to estimate earthquake probability and magnitude across geographic regions.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Random Forest</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">NumPy</span>
+          <span class="stack-tag">Matplotlib</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">📰</span>
+          <span class="project-badge badge-ml">ML · NLP</span>
+        </div>
+        <p class="project-title">Fake News Detection</p>
+        <p class="project-desc">An NLP-powered classifier that distinguishes credible news from misinformation by analyzing linguistic patterns, source credibility signals, and content structure using machine learning.</p>
+        <div class="project-stack">
+          <span class="stack-tag">NLP</span>
+          <span class="stack-tag">TF-IDF</span>
+          <span class="stack-tag">Logistic Regression</span>
+          <span class="stack-tag">BERT</span>
+          <span class="stack-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🤖</span>
+          <span class="project-badge badge-ai">AI · Detection</span>
+        </div>
+        <p class="project-title">Fake &amp; Bot Profile Detection</p>
+        <p class="project-desc">An AI system that identifies fake and bot-operated accounts on social media by analyzing behavioral patterns, profile metadata, posting frequency, and network graph features.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Graph Analysis</span>
+          <span class="stack-tag">XGBoost</span>
+          <span class="stack-tag">Feature Engineering</span>
+          <span class="stack-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🖼️</span>
+          <span class="project-badge badge-dl">Deep Learning</span>
+        </div>
+        <p class="project-title">Image Segmentation with ML</p>
+        <p class="project-desc">A semantic image segmentation pipeline using convolutional neural networks to classify each pixel of an image, enabling precise object boundary detection for medical and general use cases.</p>
+        <div class="project-stack">
+          <span class="stack-tag">TensorFlow</span>
+          <span class="stack-tag">U-Net</span>
+          <span class="stack-tag">CNN</span>
+          <span class="stack-tag">OpenCV</span>
+          <span class="stack-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🔗</span>
+          <span class="project-badge badge-ds">Data Science</span>
+        </div>
+        <p class="project-title">URL Classification &amp; Analysis at Scale</p>
+        <p class="project-desc">Processed and categorized over 1 million URLs using ML classifiers to detect malicious links, spam, and content categories — enabling enhanced data insights and real-time threat intelligence.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Feature Extraction</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Big Data</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-icon">👗</span>
+          <span class="project-badge badge-ml">ML · RecSys</span>
+        </div>
+        <p class="project-title">Outfit Recommendation System</p>
+        <p class="project-desc">A personalized fashion recommendation engine that analyzes user style preferences, occasion context, and clothing attributes to suggest curated outfit combinations using collaborative filtering and content-based ML.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Collaborative Filtering</span>
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Let's connect</p>
+      <h2>Get in touch</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <p class="contact-text">
+          I'm open to ML engineering roles, AI research opportunities, and collaborative 
+          projects at the intersection of data science and real-world impact. 
+          Whether you have a role, a project, or just want to talk AI — reach out.
+        </p>
+      </div>
+      <div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:hadiyaasif71@gmail.com">
+            <span class="contact-icon">✉️</span>
+            hadiyaasif71@gmail.com
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/Hadiyaasif" target="_blank" rel="noopener">
+            <span class="contact-icon">💼</span>
+            linkedin.com/in/Hadiyaasif
+          </a>
+          <a class="contact-link" href="tel:+923344059547">
+            <span class="contact-icon">📞</span>
+            +92 334 405 9547
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Hadiya Asif — Designed &amp; built with purpose.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
